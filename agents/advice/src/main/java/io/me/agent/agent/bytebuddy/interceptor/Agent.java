@@ -1,4 +1,4 @@
-package io.me.agent.app.agent.bytebuddy.interceptor;
+package io.me.agent.agent.bytebuddy.interceptor;
 
 import net.bytebuddy.ByteBuddy;
 import net.bytebuddy.agent.builder.AgentBuilder;

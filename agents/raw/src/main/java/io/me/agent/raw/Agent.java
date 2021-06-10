@@ -1,10 +1,8 @@
-package io.me.agent.app.agent.raw;
+package io.me.agent.raw;
 
 import sun.instrument.TransformerManager;
 
 import java.lang.instrument.Instrumentation;
-import java.util.Arrays;
-import java.util.Collections;
 
 /**
  * premain方法执行过后，会添加transformer到{@link TransformerManager}的mTransformerList字段。
@@ -29,7 +27,7 @@ public class Agent {
 
         System.out.println("start execute premain");
         // 输出虚拟机初始化过程中执行到当前Agent的premain方法已经加载的类
-        Class[] loadedClasses = inst.getAllLoadedClasses();
+        Class<?>[] loadedClasses = inst.getAllLoadedClasses();
         for (int i = loadedClasses.length - 1; i >= 0; i--) {
             Class<?> loadedClass = loadedClasses[i];
             System.out.println("ClassLoader:" + loadedClass.getClassLoader() + " --- LoadClass:" + loadedClass);

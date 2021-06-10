@@ -1,4 +1,4 @@
-package io.me.agent.app.agent.bytebuddy.interceptor;
+package io.me.agent.agent.bytebuddy.interceptor;
 
 import net.bytebuddy.implementation.bind.annotation.AllArguments;
 import net.bytebuddy.implementation.bind.annotation.Origin;

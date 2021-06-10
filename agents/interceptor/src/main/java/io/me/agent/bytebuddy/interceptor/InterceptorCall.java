@@ -1,4 +1,4 @@
-package io.me.agent.agent.bytebuddy.interceptor;
+package io.me.agent.bytebuddy.interceptor;
 
 /**
  * 在拦截器使用方式下，如果需要配合{@link net.bytebuddy.implementation.bind.annotation.Morph}来使用的话，

@@ -1,4 +1,4 @@
-package io.me.agent.app.agent.bytebuddy.advice;
+package io.me.agent.bytebuddy.advice;
 
 import net.bytebuddy.asm.Advice;
 

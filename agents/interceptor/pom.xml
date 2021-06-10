@@ -41,8 +41,8 @@
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <manifestEntries>
-                                        <Premain-Class>io.me.agent.app.agent.bytebuddy.advice.Agent</Premain-Class>
-                                        <Agent-Class>io.me.agent.app.agent.bytebuddy.advice.Agent</Agent-Class>
+                                        <Premain-Class>io.me.agent.bytebuddy.interceptor.Agent</Premain-Class>
+                                        <Agent-Class>io.me.agent.bytebuddy.interceptor.Agent</Agent-Class>
                                         <Can-Redefine-Classes>true</Can-Redefine-Classes>
                                         <Can-Retransform-Classes>true</Can-Retransform-Classes>
                                     </manifestEntries>

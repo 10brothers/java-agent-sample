@@ -2,7 +2,7 @@ package io.me.agent.app.pkg;
 
 public class Service {
 
-    public String cook() {
+    public String cook(Object obj) {
         return "noodle";
     }
 

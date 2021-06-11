@@ -19,12 +19,10 @@ public class InterceptorProvider {
 
         System.out.println("before");
         // 反射调用被委托的方法，也就是目标方法
-//        Object invoke = method.invoke(target, arguments);
-//        method.setAccessible(true);
-//        Object ret = method.invoke(target,arguments);
         System.out.println(targetClass.getName()+"  "+method.getName());
+        Object invoke = call.invoke(arguments);
         System.out.println("after");
-        return null;
+        return invoke;
 
 
     }

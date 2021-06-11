@@ -12,6 +12,7 @@
     <artifactId>agents</artifactId>
     <packaging>pom</packaging>
     <modules>
+        <module>common</module>
         <module>raw</module>
         <module>advice</module>
         <module>interceptor</module>

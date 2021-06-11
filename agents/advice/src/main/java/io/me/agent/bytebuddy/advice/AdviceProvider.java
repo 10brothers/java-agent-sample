@@ -18,8 +18,13 @@ public class AdviceProvider {
     /**
      * 注解@Advice.OnMethodEnter表明这是一个在执行过目标方法逻辑后执行的内容
      */
-    @Advice.OnMethodExit
-    public static void exit(@Advice.Origin Class<?> cls, @Advice.Origin Method method) {
+    @Advice.OnMethodExit(onThrowable = Throwable.class)
+    public static void exit(@Advice.Origin Class<?> cls, @Advice.Origin Method method, @Advice.Thrown(readOnly = false) Throwable throwable) {
+
         System.out.println("exit: " + cls.getName() + "#" + method.getName());
+
+        if (throwable != null) {
+            System.out.println("h");
+        }
     }
 }

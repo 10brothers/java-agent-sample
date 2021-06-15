@@ -11,6 +11,7 @@
   <modules>
     <module>app</module>
     <module>agents</module>
+      <module>spi</module>
   </modules>
 
   <name>java-agent-sample</name>

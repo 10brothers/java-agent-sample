@@ -16,6 +16,7 @@
         <module>raw</module>
         <module>advice</module>
         <module>interceptor</module>
+        <module>customize</module>
     </modules>
 
     <properties>

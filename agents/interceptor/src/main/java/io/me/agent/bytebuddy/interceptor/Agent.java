@@ -17,7 +17,7 @@ public class Agent {
         // 不处理ext类加载加载的类，不处理合成类 不处理sun.reflect包下的类
         AgentBuilder agentBuilder = new AgentBuilder.Default(byteBuddy).with(new SaveTransformedClassFileListener());
 
-        agentBuilder.type(ElementMatchers.any()).transform(
+        agentBuilder.type(ElementMatchers.nameContains("agent.app")).transform(
                 (builder, typeDescription, classLoader, module) ->
                         // ElementMatchers是一个工具类，方便提供一些快捷的构造ElementMatcher的方法
                         // 设置匹配的方法

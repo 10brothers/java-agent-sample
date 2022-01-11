@@ -9,6 +9,9 @@ import net.bytebuddy.matcher.ElementMatchers;
 
 import java.lang.instrument.Instrumentation;
 
+/**
+ * bytebuddy的Interceptor的使用方式
+ */
 public class Agent {
 
     public static void premain(String args, Instrumentation inst) {

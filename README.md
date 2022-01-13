@@ -17,6 +17,21 @@ agent的入口类需要指定，在agent jar中有一个META-INF目录下的MANI
 agent可以有多个，按照顺序执行其中的premain方法。在第一个premain方法被执行前，是不无法执行任何transform操作的，此时连transformer都么有。
 无论是哪个类加载器加载的类，都可以被transform，除了在premain执行前已经加载的类。
 
+### Instrumentation API
+在Agent Jar的premain或者agentmain方法中可以拿到，拿到后可以添加ClassFileTransformer，也可以对已加载的类进行重定义，也就是redefine
+。
+通过Instrumentation的redefine 方法可以在运行时动态的修改方法体，然后生效。和重新加载不一样，这里不用使用新创建的ClassLoader实例加载。
+redefine一个类时，会把已定义的Transformer都执行一遍。
+
+可以将Instrumentation的实例保存到某个类变量上，然后应用程序代码可以拿到这个实例对象，从而实现运行时动态修改类。
+
+### Attach API
+JVM在启动时，会启动一个信号分发线程，用于监听事件，比如kill的系统调用。Attach正是利用了这个，会触发JVM启动一个ServerSocket，
+然后Attach进程通过Socket目标进程通讯，可以发送一些命令，比如输出线程栈，dump堆等等。其中比较重要的一个操作是可以加载Agent Jar，
+这个时候加载的AgentJar，会执行agentmain方法。
+com.sun.tools.attach.VirtualMachine就是用来操作attach的类
+
+
 ## Byte Buddy提供的快速编码Agent的方式
 
 byte buddy提供了便捷编写agent的api，可以针对不同的目标方法有不同的transformer，有点类似于spring mvc仅提供一个servlet类，实际上可以有那么多对的控制层方法。
@@ -34,3 +49,7 @@ byte buddy提供了大量元素匹配器，用于方便的匹配目标类和方�
 
 ### advice
 advice是织入的方式，也就是直接将逻辑写入到原目标方法中，通过修改目标方法体的方式，来去修改加载的类。
+
+
+## Arthas 的原理
+先通过Attach API的方式，来加载JavaAgent，在Agent Jar中获取Instrumentation的实例，并在目标进程中启动一个NettyServer专门用于接受请求处理类的修改等操作。

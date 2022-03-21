@@ -22,6 +22,9 @@ agent可以有多个，按照顺序执行其中的premain方法。在第一个pr
 。
 通过Instrumentation的redefine 方法可以在运行时动态的修改方法体，然后生效。和重新加载不一样，这里不用使用新创建的ClassLoader实例加载。
 redefine一个类时，会把已定义的Transformer都执行一遍。
+redefine一个类时，正在执行中的方法不受影响，后续对新的方法redefine方法的调用，会走redefine后的方法逻辑。
+
+transform是在类加载的过程中的处理，可以在类加载时对加载的进行修改操作。
 
 可以将Instrumentation的实例保存到某个类变量上，然后应用程序代码可以拿到这个实例对象，从而实现运行时动态修改类。
 
